@@ -1,0 +1,31 @@
+{
+    "author": "Bzi_Han",
+    "scripts": [
+        {
+            "name": "看雪论坛签到",
+            "description": "每日签到",
+            "script": "src/kanxueSign.lua"
+        },
+        {
+            "name": "百度贴吧签到",
+            "description": "签到所有关注的贴吧",
+            "script": "src/tiebaSign.lua"
+        },
+        {
+            "name": "网易云音乐刷听歌量",
+            "description": "刷网易云听歌量，快速升10级",
+            "warning": "每日上限300首",
+            "script": "src/cloudmusicLevelUp.py"
+        },
+        {
+            "name": "精易论坛签到",
+            "description": "每日签到",
+            "script": "src/jingyiSign.lua"
+        },
+        {
+            "name": "网易云音乐签到",
+            "description": "每日签到",
+            "script": "src/cloudmusicSign.js"
+        }
+    ]
+}
