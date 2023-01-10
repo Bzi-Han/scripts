@@ -26,6 +26,12 @@
             "name": "网易云音乐签到",
             "description": "每日签到",
             "script": "src/cloudmusicSign.js"
+        },
+        {
+            "name": "米游社原神签到",
+            "description": "每日签到",
+            "script": "src/genshinSignReward.lua",
+            "warning": "通行证数据必须由用户数据与通行证组成，使用$符号进行分隔，如：数据$通行证"
         }
     ]
 }
