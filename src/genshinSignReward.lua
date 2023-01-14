@@ -61,7 +61,7 @@ function getTaskFunctionList()
 end
 
 function setTaskPassport(passport)
-    state.data, state.passport = string.gmatch(passport, '(.+)%$(.+)')()
+    state.data, state.device_id, state.passport = string.gmatch(passport, '(.+)%$(.+)%$(.+)')()
 end
 
 function sign()
@@ -80,8 +80,8 @@ function sign()
         ['Referer'] = 'https://webstatic.mihoyo.com/',
         ['DS'] = mihoyo:getDS(),
         ['x-rpc-app_version'] = '2.36.1',
-        ['x-rpc-device_id'] = '5u51xwrs-ucll-lzay-d7o0-85l7tyosr0mi',
-        ['x-rpc-client_type'] = 5
+        ['x-rpc-device_id'] = state.device_id,
+        ['x-rpc-client_type'] = 5,
     }
     local data = state.data
 
@@ -89,8 +89,13 @@ function sign()
     if result.success and 200 == result.code then
         result = json.loads(result.content)
         if 0 == result.retcode then
-            logger.succeed(result.message)
-            return true
+            if 0 == result.data.risk_code then
+                logger.succeed(result.message)
+                return true
+            else
+                logger.failed(json.dumps(result.data))
+                return false
+            end
         else
             logger.failed(result.message)
             return false
